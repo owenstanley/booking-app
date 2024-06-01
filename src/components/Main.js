@@ -1,4 +1,4 @@
-import './App.css';
+import '../App.css';
 import Banner from './Banner';
 import Contact from './Contact';
 import Reservation from './Reservation';
