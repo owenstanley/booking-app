@@ -1,6 +1,6 @@
 import '../App.css';
 
-function Submit() {
+const Submit = () => {
   return (
     <>
     </>

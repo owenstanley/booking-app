@@ -1,6 +1,6 @@
 import '../App.css';
 
-function Reservation() {
+const Reservation = () => {
   return (
     <>
     </>

@@ -1,6 +1,6 @@
 import "../App.css";
 
-function Footer() {
+const Footer = () => {
   return <>footer</>;
 }
 

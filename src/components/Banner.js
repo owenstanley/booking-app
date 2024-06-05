@@ -1,6 +1,6 @@
 import '../App.css';
 
-function Banner() {
+const Banner = () => {
   return (
     <>
     </>

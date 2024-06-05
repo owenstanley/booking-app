@@ -1,7 +1,10 @@
 import "../App.css";
+import BookingForm from "./BookingForm";
 
-function Booking() {
-  return <>Booking</>;
+const Booking = () => {
+  return <>
+    <BookingForm/>
+  </>;
 }
 
 export default Booking;

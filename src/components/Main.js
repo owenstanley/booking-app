@@ -4,7 +4,7 @@ import Contact from "./Contact";
 import Reservation from "./Reservation";
 import Submit from "./Submit";
 
-function Main() {
+const Main = () => {
   return (
     <>
       Main

@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Main from "./components/Main";
 import Booking from "./components/BookingPage";
 
-function App() {
+const App = () => {
   return (
     <>
       <Navbar />
