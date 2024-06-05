@@ -1,16 +1,17 @@
-import '../App.css';
-import Banner from './Banner';
-import Contact from './Contact';
-import Reservation from './Reservation';
-import Submit from './Submit';
+import "../App.css";
+import Banner from "./Banner";
+import Contact from "./Contact";
+import Reservation from "./Reservation";
+import Submit from "./Submit";
 
 function Main() {
   return (
     <>
-        <Banner/>
-        <Reservation/>
-        <Contact/>
-        <Submit/>
+      Main
+      <Banner />
+      <Reservation />
+      <Contact />
+      <Submit />
     </>
   );
 }

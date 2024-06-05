@@ -1,10 +1,7 @@
-import '../App.css';
+import "../App.css";
 
 function Footer() {
-  return (
-    <>
-    </>
-  );
+  return <>footer</>;
 }
 
 export default Footer;

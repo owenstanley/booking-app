@@ -1,12 +1,7 @@
-import '../App.css';
-import { Routes, Route, Link } from "react-router-dom";
+import "../App.css";
 
 function Booking() {
-  return (
-    <>
-        Booking
-    </>
-  );
+  return <>Booking</>;
 }
 
 export default Booking;

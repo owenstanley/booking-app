@@ -1,14 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&display=swap");
 
 .container {
-  display: flex;
+  display: grid;
   flex-direction: column;
   margin-left: 15%;
   margin-right: 15%;
-  font-family: 'Karla';
+  font-family: "Karla";
 }
 
-h1, h2 {
-  font-family: 'Markazi Text';
+.header {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+  justify-content: space-between;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: row;
+  color: black;
+  text-decoration: none;
+}
+
+.nav-item:hover {
+  color: grey;
+}
+
+h1,
+h2 {
+  font-family: "Markazi Text";
 }
