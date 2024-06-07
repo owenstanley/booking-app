@@ -1,16 +1,20 @@
 import "../App.css";
 import React from "react";
 import { useState } from "react";
+import Calendar from "react-calendar";
+import "react-time-picker/dist/TimePicker.css";
 
 const BookingForm = () => {
-  const [dateReserved, setDateReserved] = useState("");
-  const [timeReserved, setTimeReserved] = useState("");
+  const today = new Date();
+  const maxDate = new Date(new Date().setMonth(today.getMonth() + 3));
+  const [dateReserved, setDateReserved] = useState(today);
+  const [timeReserved, setTimeReserved] = useState(today);
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Account created!");
+    alert(`${dateReserved} ${timeReserved}`);
   };
 
   const getIsFormValid = () => {
@@ -33,31 +37,44 @@ const BookingForm = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <label>
-          Choose date:<sup>*</sup>
-        </label>
-        <input
+        <Calendar
           value={dateReserved}
-          type="date"
-          onChange={(e) => {
-            setDateReserved(e.target.value);
+          onChange={(value) => {
+            setDateReserved(value);
           }}
+          selectRange={false}
+          minDate={today}
+          maxDate={maxDate}
+          minDetail="year"
         />
         <label>
           Choose time:<sup>*</sup>
         </label>
-        <input
-          value={timeReserved}
-          onChange={(e) => {
-            setTimeReserved(e.target.value);
-          }}
-          placeholder="Time"
-        />
-        <button
-          type="submit"
-          disabled={!getIsFormValid()}
-          onSubmit={clearForm}
-        >Reserve</button>
+        <div className="Field">
+          <label>Full name</label>
+          <input
+            value={fullName}
+            onChange={(e) => {
+              setFullName(e.target.value);
+            }}
+            placeholder="Full name"
+          />
+        </div>
+        <div className="Field">
+          <label>
+            Email address <sup>*</sup>
+          </label>
+          <input
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+            placeholder="Email address"
+          />
+        </div>
+        <button type="submit" disabled={!getIsFormValid()} onSubmit={clearForm}>
+          Reserve
+        </button>
       </form>
     </>
   );
