@@ -16,8 +16,11 @@ import "react-calendar/dist/Calendar.css";
 // lifting state up to main
 
 const BookingForm = () => {
+  // setting up variables for the available booking window
   const today = new Date();
+  // max date is 3 months in advance
   const maxDate = new Date(new Date().setMonth(today.getMonth() + 3));
+  // setting up state variables
   const [dateReserved, setDateReserved] = useState(today);
   const [timeReserved, setTimeReserved] = useState("12:00");
   const [numGuests, setNumGuests] = useState(1);
@@ -26,11 +29,13 @@ const BookingForm = () => {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [phoneNumber, setPhonenNumber] = useState("");
-  const [promoEmails, setPromoEmails] = useState("");
-  const [privacyPolicy, setPrivacyPolicy] = useState("");
+  const [promoEmails, setPromoEmails] = useState(false);
+  const [privacyPolicy, setPrivacyPolicy] = useState(false);
 
+  // array for the available occaions - used to map options
   const arrOccasions = ["None", "Birthday", "Anniversary", "Other"];
-
+  // array for all available times - starting at 12:00 and ending at 21:30
+  // need to update a map for given opening hours if possible
   const allTimes = [
     "12:00",
     "12:15",
@@ -72,45 +77,70 @@ const BookingForm = () => {
     "21:15",
     "21:30",
   ];
+  // setting up array to track the times available to book - you cannot book before the current date+time
   let availableTimes = allTimes;
 
+  // handing form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`${dateReserved} ${timeReserved}`);
+    alert(`${dateReserved} ${timeReserved} ${promoEmails} ${privacyPolicy}`);
   };
 
+  // submit is disabled unless form is valid
   const getIsFormValid = () => {
     return fullName && validateEmail(email);
   };
 
+  // function to get available times in dropdown depending on the current date selected
+  // if date is today, only show times ahead of current time
   const getValidTimes = () => {
+    // resetting availableTimes to allTimes
     availableTimes = allTimes;
+    // if date is today
     if (dateReserved.toLocaleDateString() === today.toLocaleDateString()) {
-      const hours = today.getHours();
+      // variable for nearest 15 minutes to time - e.g. 12 mins -> 15 mins
+      const nearestFifteen = (Math.round(today.getMinutes() / 15) * 15) % 60;
+      // minutes variable - if we rounded the time down, we add 15 minutes
+      // meaning if time is e.g. 16:05, the next available time will be 16:15
       const minutes =
-        (Math.round(today.getMinutes() / 15) * 15) % 60 < today.getMinutes()
-          ? ((Math.round(today.getMinutes() / 15) * 15) % 60) + 15
-          : (Math.round(today.getMinutes() / 15) * 15) % 60;
-      const currentTime = `${hours}:${minutes}`;
-      console.log(currentTime);
+        nearestFifteen <= today.getMinutes() && today.getMinutes() < 53
+          ? (Math.round((nearestFifteen + 15) / 15) * 15) % 60
+          : nearestFifteen;
+      // hours variable - if we rounded minutes up to 00, add 1 to hours
+      const hours = minutes === 0 ? today.getHours() + 1 : today.getHours();
+      // current time variable - if minutes = 0, add the leading 0 -> 00
+      const currentTime = `${hours}:${minutes === 0 ? "0" : ""}${minutes}`;
+      // splicing the array to only show times after currentTime
       availableTimes.splice(0, availableTimes.indexOf(currentTime));
     }
   };
 
-  const generateOccaionOptions = () => {
-    return arrOccasions.map((occ) => <option value={occ}>{occ}</option>);
-  };
-
+  // generating the options for the time selector
   const generateTimeOptions = () => {
     getValidTimes();
-    return availableTimes.map((time) => <option value={time}>{time}</option>);
+    return availableTimes.map((time, index) => (
+      <option key={index} value={time}>
+        {time}
+      </option>
+    ));
   };
 
+  // generating the options for the occasion selector
+  const generateOccaionOptions = () => {
+    return arrOccasions.map((occ, index) => (
+      <option key={index} value={occ}>
+        {occ}
+      </option>
+    ));
+  };
+
+  // clear form func
   const clearForm = () => {
     setEmail("");
     setFullName("");
   };
 
+  // validate email func
   const validateEmail = (email) => {
     return String(email)
       .toLowerCase()
@@ -119,6 +149,18 @@ const BookingForm = () => {
       );
   };
 
+  // form contains:
+  // calendar built with react-calendar
+  // time
+  // guests
+  // occasion
+  // additional info
+  // name
+  // email
+  // phone
+  // contact emails
+  // privacy policy
+  // submit
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit} className="reservations-form">
@@ -180,6 +222,21 @@ const BookingForm = () => {
         </div>
         <div className="Field">
           <label>
+            Additional requests:
+          </label>
+          <textarea
+            rows="1"
+            cols="40"
+            value={addInfo}
+            onChange={(e) => {
+              setAddInfo(e.target.value);
+            }}
+          >
+          </textarea>
+        </div>
+        <br/>
+        <div className="Field">
+          <label>
             Full name:<sup>*</sup>
           </label>
           <input
@@ -213,6 +270,34 @@ const BookingForm = () => {
               setPhonenNumber(e.target.value);
             }}
             placeholder=""
+          />
+        </div>
+        <div className="Field">
+          <label>
+            Please check here if you would like to receive marketing emails from
+            us:
+          </label>
+          <input
+            type="checkbox"
+            value={promoEmails}
+            defaultChecked={promoEmails}
+            onChange={() => {
+              setPromoEmails(!promoEmails);
+            }}
+          />
+        </div>
+        <br/>
+        <div className="Field">
+          <label>
+            Please agree to our Privacy Policy:<sup>*</sup>
+          </label>
+          <input
+            type="checkbox"
+            value={privacyPolicy}
+            defaultChecked={privacyPolicy}
+            onChange={() => {
+              setPrivacyPolicy(!privacyPolicy);
+            }}
           />
         </div>
         <button type="submit" disabled={!getIsFormValid()} onSubmit={clearForm}>
