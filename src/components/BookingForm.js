@@ -7,7 +7,6 @@ import "react-calendar/dist/Calendar.css";
 // TODO add final input fields
 // form validation - feedback if e.g. email is wrong
 // css styling
-// lifting state up to main - make sure component is setup for state e.g. from a variable or an API
 
 const BookingForm = (props) => {
   // array for the available occaions - used to map options
@@ -16,7 +15,7 @@ const BookingForm = (props) => {
   // handing form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(
+    console.log(
       `${props.dateReserved} ${props.timeReserved} ${props.promoEmails} ${props.privacyPolicy}`
     );
   };

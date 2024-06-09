@@ -6,7 +6,7 @@ const Booking = (props) => {
 
   return (
     <>
-      <Banner />
+      <Banner message="Reserve a table"/>
       <BookingForm
         today={props.today}
         maxDate={props.maxDate}
