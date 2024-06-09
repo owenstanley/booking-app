@@ -1,10 +1,11 @@
 import '../App.css';
 
-const Reservation = () => {
+const About = () => {
   return (
     <>
+    About
     </>
   );
 }
 
-export default Reservation;
+export default About;

@@ -1,10 +1,11 @@
 import '../App.css';
 
-const Contact = () => {
+const Login = () => {
   return (
     <>
+    Login
     </>
   );
 }
 
-export default Contact;
+export default Login;

@@ -1,10 +1,11 @@
 import '../App.css';
 
-const Submit = () => {
+const Menu = () => {
   return (
     <>
+    Menu
     </>
   );
 }
 
-export default Submit;
+export default Menu;

@@ -56,3 +56,8 @@ h2 {
   display: flex;
   justify-content: space-between;
 }
+
+.calendar-container {
+  display: flex;
+  justify-content: center;
+}
