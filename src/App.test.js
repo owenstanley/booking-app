@@ -2,7 +2,6 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import BookingForm from "./components/BookingForm";
 
 const availableTimes = ["17:00", "17:15", "17:30"];
-const today = new Date();
 const fullName = "Test Name";
 const email = "test.name@gmail.com";
 const privacyPolicy = true;

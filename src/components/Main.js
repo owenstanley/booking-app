@@ -35,7 +35,8 @@ const Main = () => {
     setPrivacyPolicy(false)
   }
 
-  const submitForm = (formData) => {
+  const submitForm = (e, formData) => {
+    e.preventDefault();
     if (submitAPI(formData)) {
       navigate("/confirmed-booking");
     }

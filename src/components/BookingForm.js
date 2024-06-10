@@ -1,8 +1,11 @@
 import "../App.css";
 import React from "react";
 import Calendar from "react-calendar";
+import PhoneInput from "react-phone-number-input";
+import { isPossiblePhoneNumber } from "react-phone-number-input";
 import "react-time-picker/dist/TimePicker.css";
 import "react-calendar/dist/Calendar.css";
+import "react-phone-number-input/style.css";
 
 // TODO
 // form validation - feedback if e.g. email is wrong
@@ -12,9 +15,19 @@ const BookingForm = (props) => {
   // array for the available occaions - used to map options
   const arrOccasions = ["None", "Birthday", "Anniversary", "Other"];
 
+  const addTouchedClass = (input) => {
+    input.classList.add("touched");
+  };
+
   // submit is disabled unless form is valid
   const getIsFormValid = () => {
-    return props.fullName && validateEmail(props.email);
+    return (
+      props.fullName &&
+      validateEmail(props.email) &&
+      (props.phoneNumber === undefined
+        ? false
+        : isPossiblePhoneNumber(props.phoneNumber))
+    );
   };
 
   // generating the options for the time selector
@@ -44,18 +57,6 @@ const BookingForm = (props) => {
       );
   };
 
-  // form contains:
-  // calendar built with react-calendar
-  // time
-  // guests
-  // occasion
-  // additional info
-  // name
-  // email
-  // phone
-  // contact emails
-  // privacy policy
-  // submit
   return (
     <div className="form-container">
       <form onSubmit={props.onSubmit} className="reservations-form">
@@ -138,13 +139,17 @@ const BookingForm = (props) => {
           </label>
           <input
             name="fullName"
+            className="required-field"
             value={props.fullName}
             onChange={(e) => {
               props.setFullName(e.target.value);
             }}
+            onClick={(e) => {
+              addTouchedClass(e.target);
+            }}
             placeholder="Full name"
             required
-            minLength="2"
+            minLength={3}
           />
         </div>
         <div className="Field">
@@ -153,25 +158,43 @@ const BookingForm = (props) => {
           </label>
           <input
             name="email"
+            className="required-field"
             value={props.email}
             onChange={(e) => {
+              if (!e.target.value) {
+                e.target.setCustomValidity(
+                  "Please fill in this field"
+                );
+              } else if (!validateEmail(e.target.value)) {
+                e.target.setCustomValidity("Please enter a valid email address");
+              } else {
+                e.target.setCustomValidity("");
+              }
               props.setEmail(e.target.value);
+            }}
+            onClick={(e) => {
+              addTouchedClass(e.target);
             }}
             placeholder="Email address"
             required
+            pattern="(([^<>\(\)\[\]\\.,;:\s@]+(\.[^<>\(\)\[\]\\.,;:\s@]+)*)|(.+))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,})).*"
           />
         </div>
         <div className="Field">
           <label>
             Phone number:<sup>*</sup>
           </label>
-          <input
-            type="tel"
+          <PhoneInput
             value={props.phoneNumber}
-            onChange={(e) => {
-              props.setPhoneNumber(e.target.value);
+            className="required-field"
+            onChange={(value) => {
+              props.setPhoneNumber(value);
             }}
-            placeholder=""
+            onClick={(e) => {
+              addTouchedClass(e.target);
+            }}
+            placeholder="Phone number"
+            defaultCountry="GB"
             required
           />
         </div>
@@ -196,11 +219,15 @@ const BookingForm = (props) => {
           </label>
           <input
             name="privacyPolicy"
+            className="required-field"
             type="checkbox"
             value={props.privacyPolicy}
             defaultChecked={props.privacyPolicy}
             onChange={() => {
               props.setPrivacyPolicy(!props.privacyPolicy);
+            }}
+            onClick={(e) => {
+              addTouchedClass(e.target);
             }}
             required
           />

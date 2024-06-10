@@ -61,3 +61,16 @@ h2 {
   display: flex;
   justify-content: center;
 }
+
+input {
+  border-radius: 6px;
+  font-family: 'Karla';
+}
+
+.required-field.touched:invalid {
+  border-color: red;
+}
+
+.PhoneInputInput.touched:invalid {
+  border-color: red;
+}
