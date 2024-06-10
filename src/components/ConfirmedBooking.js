@@ -23,8 +23,10 @@ const ConfirmedBooking = (props) => {
             <span>Guests: {props.numGuests}</span>
             <span>A confirmation email has been sent to {props.email}</span>
             <span>Please follow the link in the email if you need to make any adjustments</span>
+            <div>
             <button onClick={goReservations}>Make another reservation</button>
             <button onClick={goHome}>Go home</button>
+            </div>
         </>
     )
 }

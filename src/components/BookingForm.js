@@ -4,7 +4,7 @@ import Calendar from "react-calendar";
 import "react-time-picker/dist/TimePicker.css";
 import "react-calendar/dist/Calendar.css";
 
-// TODO add final input fields
+// TODO
 // form validation - feedback if e.g. email is wrong
 // css styling
 
@@ -61,6 +61,7 @@ const BookingForm = (props) => {
       <form onSubmit={props.onSubmit} className="reservations-form">
         <div className="calendar-container">
           <Calendar
+            name="dateReserved"
             value={props.dateReserved}
             onChange={(value) => {
               props.setDateReserved(value);
@@ -77,6 +78,7 @@ const BookingForm = (props) => {
             Choose time:<sup>*</sup>
           </label>
           <select
+            name="timeReserved"
             value={props.timeReserved}
             onChange={(e) => {
               props.setTimeReserved(e.target.value);
@@ -135,6 +137,7 @@ const BookingForm = (props) => {
             Full name:<sup>*</sup>
           </label>
           <input
+            name="fullName"
             value={props.fullName}
             onChange={(e) => {
               props.setFullName(e.target.value);
@@ -149,6 +152,7 @@ const BookingForm = (props) => {
             Email address:<sup>*</sup>
           </label>
           <input
+            name="email"
             value={props.email}
             onChange={(e) => {
               props.setEmail(e.target.value);
@@ -191,6 +195,7 @@ const BookingForm = (props) => {
             Please agree to our Privacy Policy:<sup>*</sup>
           </label>
           <input
+            name="privacyPolicy"
             type="checkbox"
             value={props.privacyPolicy}
             defaultChecked={props.privacyPolicy}
@@ -200,7 +205,7 @@ const BookingForm = (props) => {
             required
           />
         </div>
-        <button type="submit" disabled={!getIsFormValid()}>
+        <button id="submit-btn" type="submit" disabled={!getIsFormValid()}>
           Reserve
         </button>
       </form>
