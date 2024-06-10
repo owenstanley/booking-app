@@ -12,14 +12,6 @@ const BookingForm = (props) => {
   // array for the available occaions - used to map options
   const arrOccasions = ["None", "Birthday", "Anniversary", "Other"];
 
-  // handing form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(
-      `${props.dateReserved} ${props.timeReserved} ${props.promoEmails} ${props.privacyPolicy}`
-    );
-  };
-
   // submit is disabled unless form is valid
   const getIsFormValid = () => {
     return props.fullName && validateEmail(props.email);
@@ -41,12 +33,6 @@ const BookingForm = (props) => {
         {occ}
       </option>
     ));
-  };
-
-  // clear form func
-  const clearForm = () => {
-    props.setEmail("");
-    props.setFullName("");
   };
 
   // validate email func
@@ -72,7 +58,7 @@ const BookingForm = (props) => {
   // submit
   return (
     <div className="form-container">
-      <form onSubmit={handleSubmit} className="reservations-form">
+      <form onSubmit={props.onSubmit} className="reservations-form">
         <div className="calendar-container">
           <Calendar
             value={props.dateReserved}
@@ -179,7 +165,7 @@ const BookingForm = (props) => {
             type="tel"
             value={props.phoneNumber}
             onChange={(e) => {
-              props.setPhonenNumber(e.target.value);
+              props.setPhoneNumber(e.target.value);
             }}
             placeholder=""
             required
@@ -214,7 +200,7 @@ const BookingForm = (props) => {
             required
           />
         </div>
-        <button type="submit" disabled={!getIsFormValid()} onSubmit={clearForm}>
+        <button type="submit" disabled={!getIsFormValid()}>
           Reserve
         </button>
       </form>

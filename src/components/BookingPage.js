@@ -27,11 +27,12 @@ const Booking = (props) => {
         email={props.email}
         setEmail={props.setEmail}
         phoneNumber={props.phoneNumber}
-        setPhonenNumber={props.setPhonenNumber}
+        setPhoneNumber={props.setPhoneNumber}
         promoEmails={props.promoEmails}
         setPromoEmails={props.setPromoEmails}
         privacyPolicy={props.privacyPolicy}
         setPrivacyPolicy={props.setPrivacyPolicy}
+        onSubmit={props.onSubmit}
       />
     </>
   );

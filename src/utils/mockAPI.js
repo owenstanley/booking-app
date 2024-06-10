@@ -15,7 +15,6 @@ export const fetchAPI = function (date) {
 
   for (let i = 17; i <= 23; i++) {
     if (random() < 0.5) {
-      console.log(random())
       result.push(i + ":00");
     }
     if (random() < 0.5) {
