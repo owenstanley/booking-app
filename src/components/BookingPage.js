@@ -1,12 +1,13 @@
 import "../App.css";
 import BookingForm from "./BookingForm";
 import Banner from "./Banner";
+import Image from'../assets/restaurant-banner.png'
 
 const Booking = (props) => {
 
   return (
     <>
-      <Banner message="Reserve a table"/>
+      <Banner message="Reserve a table" imageSrc={Image} alt="Banner image of the inside of a restaurant" scrollID="form-container"/>
       <BookingForm
         today={props.today}
         maxDate={props.maxDate}

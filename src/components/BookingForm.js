@@ -58,9 +58,13 @@ const BookingForm = (props) => {
   };
 
   return (
-    <div className="form-container">
-      <form onSubmit={props.onSubmit} className="reservations-form">
-        <div className="calendar-container">
+    <div id="form-container" className="form-container">
+      <form
+        id="reservations-form"
+        onSubmit={props.onSubmit}
+        className="reservations-form"
+      >
+        <div aria-label="Calendar" className="calendar-container">
           <Calendar
             name="dateReserved"
             value={props.dateReserved}
@@ -75,10 +79,11 @@ const BookingForm = (props) => {
           />
         </div>
         <div className="Field">
-          <label>
+          <label htmlFor="selectTime">
             Choose time:<sup>*</sup>
           </label>
           <select
+            id="selectTime"
             name="timeReserved"
             value={props.timeReserved}
             onChange={(e) => {
@@ -89,10 +94,11 @@ const BookingForm = (props) => {
           </select>
         </div>
         <div className="Field">
-          <label>
+          <label htmlFor="numGuests">
             No. of guests:<sup>*</sup>
           </label>
           <select
+            id="numGuests"
             value={props.numGuests}
             onChange={(e) => {
               props.setNumGuests(e.target.value);
@@ -109,10 +115,11 @@ const BookingForm = (props) => {
           </select>
         </div>
         <div className="Field">
-          <label>
+          <label htmlFor="occasion">
             Occasion:<sup>*</sup>
           </label>
           <select
+            id="occasion"
             value={props.occasion}
             onChange={(e) => {
               props.setOccasion(e.target.value);
@@ -122,8 +129,9 @@ const BookingForm = (props) => {
           </select>
         </div>
         <div className="Field">
-          <label>Additional requests:</label>
+          <label htmlFor="add-requests">Additional requests:</label>
           <textarea
+            id="add-requests"
             rows="1"
             cols="40"
             value={props.addInfo}
@@ -134,11 +142,12 @@ const BookingForm = (props) => {
         </div>
         <br />
         <div className="Field">
-          <label>
+          <label htmlFor="fullname">
             Full name:<sup>*</sup>
           </label>
           <input
             name="fullName"
+            id="fullname"
             className="required-field"
             value={props.fullName}
             onChange={(e) => {
@@ -153,20 +162,21 @@ const BookingForm = (props) => {
           />
         </div>
         <div className="Field">
-          <label>
+          <label htmlFor="email">
             Email address:<sup>*</sup>
           </label>
           <input
             name="email"
+            id="email"
             className="required-field"
             value={props.email}
             onChange={(e) => {
               if (!e.target.value) {
-                e.target.setCustomValidity(
-                  "Please fill in this field"
-                );
+                e.target.setCustomValidity("Please fill in this field");
               } else if (!validateEmail(e.target.value)) {
-                e.target.setCustomValidity("Please enter a valid email address");
+                e.target.setCustomValidity(
+                  "Please enter a valid email address"
+                );
               } else {
                 e.target.setCustomValidity("");
               }
@@ -181,10 +191,11 @@ const BookingForm = (props) => {
           />
         </div>
         <div className="Field">
-          <label>
+          <label htmlFor="phoneNumber">
             Phone number:<sup>*</sup>
           </label>
           <PhoneInput
+            id="phoneNumber"
             value={props.phoneNumber}
             className="required-field"
             onChange={(value) => {
@@ -199,11 +210,12 @@ const BookingForm = (props) => {
           />
         </div>
         <div className="Field">
-          <label>
+          <label htmlFor="promoEmails">
             Please check here if you would like to receive marketing emails from
             us:
           </label>
           <input
+            id="promoEmails"
             type="checkbox"
             value={props.promoEmails}
             defaultChecked={props.promoEmails}
@@ -214,10 +226,11 @@ const BookingForm = (props) => {
         </div>
         <br />
         <div className="Field">
-          <label>
+          <label htmlFor="privacyPolicy">
             Please agree to our Privacy Policy:<sup>*</sup>
           </label>
           <input
+            id="privacyPolicy"
             name="privacyPolicy"
             className="required-field"
             type="checkbox"
@@ -232,7 +245,12 @@ const BookingForm = (props) => {
             required
           />
         </div>
-        <button id="submit-btn" type="submit" disabled={!getIsFormValid()}>
+        <button
+          aria-label="Submit form"
+          id="submit-btn"
+          type="submit"
+          disabled={!getIsFormValid()}
+        >
           Reserve
         </button>
       </form>

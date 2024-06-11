@@ -48,13 +48,14 @@ h2 {
   margin: auto;
 }
 
-.reservations-form{
+.reservations-form {
   margin: auto;
 }
 
 .Field {
   display: flex;
   justify-content: space-between;
+  margin-top: 4%;
 }
 
 .calendar-container {
@@ -64,7 +65,7 @@ h2 {
 
 input {
   border-radius: 6px;
-  font-family: 'Karla';
+  font-family: "Karla";
 }
 
 .required-field.touched:invalid {
@@ -73,4 +74,43 @@ input {
 
 .PhoneInputInput.touched:invalid {
   border-color: red;
+}
+
+.banner-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.banner-img {
+  filter: grayscale(20%);
+  filter: brightness(70%);
+  opacity: 60%;
+  width: 100%;
+}
+
+.banner-text {
+  font-size: 5vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: -3px 3px black;
+}
+
+.footer-container {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.footer-logo {
+  height: 12vh;
+}
+
+.footer-nav ul {
+  list-style-type: none;
 }
