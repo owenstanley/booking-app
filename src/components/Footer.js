@@ -8,7 +8,7 @@ const Footer = () => {
       <Link to="/" className="nav-logo">
       <img
         id="footer-logo"
-        class="footer-logo"
+        className="footer-logo"
         alt="Little Lemon logo"
         src={Logo}
       />
@@ -32,6 +32,25 @@ const Footer = () => {
         </Link>
         <Link to="/login" className="nav-item">
           Login
+        </Link>
+        </ul>
+      </div>
+      <div className="footer-nav">
+        <ul>
+          <li>info@little-lemon.com</li>
+          <li>+44 1234 567890</li>
+          <li>1 Fake Street</li>
+          <li>London</li>
+          <li>N1 1AA</li>
+        </ul>
+      </div>
+      <div className="footer-nav">
+        <ul>
+        <Link to="https://instagram.com"target="_blank" className="nav-item">
+          Instagram
+        </Link>
+        <Link to="https://facebook.com"target="_blank" className="nav-item">
+          Facebook
         </Link>
         </ul>
       </div>

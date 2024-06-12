@@ -245,14 +245,17 @@ const BookingForm = (props) => {
             required
           />
         </div>
+        <div class="btn-container">
         <button
           aria-label="Submit form"
           id="submit-btn"
+          className="submit-btn"
           type="submit"
           disabled={!getIsFormValid()}
         >
           Reserve
         </button>
+        </div>
       </form>
     </div>
   );
