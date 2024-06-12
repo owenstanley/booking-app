@@ -1,6 +1,6 @@
 import Banner from "./Banner";
 import { useNavigate } from "react-router-dom";
-import Image from '../assets/restaurant-banner.png'
+import Image from '../assets/mario-adrian-b.jpg'
 
 const ConfirmedBooking = (props) => {
     const navigate = useNavigate();

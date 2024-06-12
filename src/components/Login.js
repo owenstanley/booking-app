@@ -1,9 +1,10 @@
 import '../App.css';
+import UnderConstruction from './UnderConstruction';
 
 const Login = () => {
   return (
     <>
-    Login
+    <UnderConstruction/>
     </>
   );
 }

@@ -80,6 +80,8 @@ input {
   position: relative;
   text-align: center;
   color: white;
+  margin-top: 1%;
+  margin-bottom: 1%;
 }
 
 .banner-img {
@@ -95,11 +97,10 @@ input {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-shadow: -3px 3px black;
+  font-family: 'Markazi Text';
 }
 
 .footer-container {
-  padding-top: 2%;
   padding-bottom: 2%;
   display: flex;
   justify-content: space-between;
@@ -156,4 +157,14 @@ input {
   align-items: center;
   font-size: 20px;
   padding-top: 1%;
+}
+
+hr {
+  margin-top: 2%;
+  color: rgb(224, 224, 224);
+}
+
+.logo-nav {
+  display: flex;
+  align-items: center;
 }

@@ -1,7 +1,7 @@
 import "../App.css";
 import BookingForm from "./BookingForm";
 import Banner from "./Banner";
-import Image from'../assets/restaurant-banner.png'
+import Image from'../assets/restaurant-chef.jpg'
 
 const Booking = (props) => {
 

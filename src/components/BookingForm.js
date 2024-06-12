@@ -245,7 +245,7 @@ const BookingForm = (props) => {
             required
           />
         </div>
-        <div class="btn-container">
+        <div className="btn-container">
         <button
           aria-label="Submit form"
           id="submit-btn"
