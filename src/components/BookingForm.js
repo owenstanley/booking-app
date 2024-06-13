@@ -23,7 +23,7 @@ const BookingForm = (props) => {
   const getIsFormValid = () => {
     return (
       props.fullName &&
-      validateEmail(props.email).length > 0 &&
+      validateEmail(props.email) &&
       (props.phoneNumber === undefined
         ? false
         : isPossiblePhoneNumber(props.phoneNumber, props.defaultCountry))
@@ -247,13 +247,13 @@ const BookingForm = (props) => {
           />
         </div>
         <div className="btn-container">
-        <button
-          className="submit-btn"
-          type="submit"
-          disabled={!getIsFormValid()}
-        >
-          Reserve
-        </button>
+          <button
+            className="submit-btn"
+            type="submit"
+            disabled={!getIsFormValid()}
+          >
+            Reserve
+          </button>
         </div>
       </form>
     </div>
