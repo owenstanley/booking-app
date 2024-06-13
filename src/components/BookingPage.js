@@ -29,6 +29,7 @@ const Booking = (props) => {
         setEmail={props.setEmail}
         phoneNumber={props.phoneNumber}
         setPhoneNumber={props.setPhoneNumber}
+        defaultCountry={props.defaultCountry}
         promoEmails={props.promoEmails}
         setPromoEmails={props.setPromoEmails}
         privacyPolicy={props.privacyPolicy}

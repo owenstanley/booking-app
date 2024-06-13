@@ -37,6 +37,7 @@ const Main = () => {
 
   const submitForm = (e, formData) => {
     e.preventDefault();
+    console.debug("Pressed")
     if (submitAPI(formData)) {
       navigate("/confirmed-booking");
     }
@@ -53,6 +54,8 @@ const Main = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [promoEmails, setPromoEmails] = useState(false);
   const [privacyPolicy, setPrivacyPolicy] = useState(false);
+
+  const defaultCountry = 'GB'
 
   const initialTimes = fetchAPI(dateReserved);
   const [availableTimes, dispatch] = useReducer(updateTimes, initialTimes);
@@ -87,6 +90,7 @@ const Main = () => {
               setEmail={setEmail}
               phoneNumber={phoneNumber}
               setPhoneNumber={setPhoneNumber}
+              defaultCountry={defaultCountry}
               promoEmails={promoEmails}
               setPromoEmails={setPromoEmails}
               privacyPolicy={privacyPolicy}

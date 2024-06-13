@@ -1,32 +1,38 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import BookingForm from "./components/BookingForm";
+import { createMemoryHistory } from "history";
+import { BrowserRouter } from "react-router-dom";
 
 const availableTimes = ["17:00", "17:15", "17:30"];
 const fullName = "Test Name";
 const email = "test.name@gmail.com";
+const phoneNumber = "07920269507";
+const defaultCountry = "GB";
 const privacyPolicy = true;
 const handleSubmit = jest.fn();
 
 test("BookingForm static text", async () => {
-  handleSubmit.mockImplementation((e) => {
-    e.preventDefault();
-  });
-
   render(<BookingForm availableTimes={availableTimes} />);
   const bannerElement = screen.getByText("Additional requests:");
   expect(bannerElement).toBeInTheDocument();
 });
 
-test("BookingForm submit", () => {
+test("BookingForm submit", async () => {
   render(
     <BookingForm
       availableTimes={availableTimes}
       fullName={fullName}
       email={email}
+      phoneNumber={phoneNumber}
+      defaultCountry={defaultCountry}
       privacyPolicy={privacyPolicy}
       onSubmit={handleSubmit}
     />
   );
+
+  handleSubmit.mockImplementation((e) => {
+    e.preventDefault();
+  });
 
   const submitButton = screen.getByRole("button", {
     name: /Reserve/i,
@@ -44,4 +50,14 @@ test("BookingForm submit", () => {
       }),
     })
   );
+});
+
+test("BookingForm can't submit if fields are empty", async () => {
+  render(<BookingForm availableTimes={availableTimes} />);
+  const submitButton = screen.getByRole("button", {
+    name: /Reserve/i,
+  });
+  fireEvent.click(submitButton);
+
+  expect(handleSubmit).not.toHaveBeenCalled();
 });

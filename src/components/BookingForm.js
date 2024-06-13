@@ -23,10 +23,10 @@ const BookingForm = (props) => {
   const getIsFormValid = () => {
     return (
       props.fullName &&
-      validateEmail(props.email) &&
+      validateEmail(props.email).length > 0 &&
       (props.phoneNumber === undefined
         ? false
-        : isPossiblePhoneNumber(props.phoneNumber))
+        : isPossiblePhoneNumber(props.phoneNumber, props.defaultCountry))
     );
   };
 
@@ -60,6 +60,7 @@ const BookingForm = (props) => {
   return (
     <div id="form-container" className="form-container">
       <form
+        aria-label="Reservations form"
         id="reservations-form"
         onSubmit={props.onSubmit}
         className="reservations-form"
@@ -247,8 +248,6 @@ const BookingForm = (props) => {
         </div>
         <div className="btn-container">
         <button
-          aria-label="Submit form"
-          id="submit-btn"
           className="submit-btn"
           type="submit"
           disabled={!getIsFormValid()}
