@@ -85,19 +85,19 @@ input {
 }
 
 .banner-img {
-  filter: grayscale(20%);
-  filter: brightness(70%);
-  opacity: 60%;
+  filter: brightness(60%);
   width: 100%;
 }
 
 .banner-text {
-  font-size: 5vw;
+  font-size: 8vw;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 100%;
   font-family: 'Markazi Text';
+  text-shadow: -3px 3px black;
 }
 
 .footer-container {
@@ -139,8 +139,8 @@ input {
 }
 
 .submit-btn:disabled {
-  background-color: rgba(203, 203, 203, 1);
-  color: rgba(150, 150, 150, 1);
+  background-color: #ffffc8;
+  color: rgb(111, 111, 111);
 }
 
 .confirmed-btn-container{
