@@ -15,7 +15,7 @@ test("BookingForm static text", async () => {
   expect(bannerElement).toBeInTheDocument();
 });
 
-test("BookingForm submit", async () => {
+test("Testing if the BookingForm will submit with valid data", async () => {
   render(
     <BookingForm
       availableTimes={availableTimes}
@@ -50,7 +50,7 @@ test("BookingForm submit", async () => {
   );
 });
 
-test("BookingForm can't submit if fields are empty", async () => {
+test("Making sure the BookingForm can't submit with invalid data", async () => {
   render(<BookingForm availableTimes={availableTimes} />);
   const submitButton = screen.getByRole("button", {
     name: /Reserve/i,

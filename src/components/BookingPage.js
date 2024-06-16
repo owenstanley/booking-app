@@ -7,7 +7,7 @@ const Booking = (props) => {
 
   return (
     <>
-      <Banner message="Reserve a table" imageSrc={Image} alt="Banner image of the inside of a restaurant" ariaLabel="banner image" scrollID="form-container"/>
+      <Banner message="Reserve a table" imageSrc={Image} alt="Banner image of the inside of a restaurant" scrollID="form-container"/>
       <BookingForm
         today={props.today}
         maxDate={props.maxDate}

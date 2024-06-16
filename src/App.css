@@ -8,6 +8,21 @@
   margin-right: 15%;
   font-family: "Karla";
 }
+@media only screen and (max-width: 800px) {
+  .container {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  .confirmed-btn-container{
+    display: flex;
+    flex-direction: column;
+    padding-top: 5%;
+    padding-bottom: 5%;
+  }
+  .Field {
+    justify-content: center;
+  }
+}
 
 .header {
   display: inline-flex;
@@ -146,8 +161,8 @@ input {
 .confirmed-btn-container{
   display: flex;
   justify-content: space-around;
-  padding-left: 35%;
-  padding-right: 35%;
+  padding-left: 30%;
+  padding-right: 30%;
   padding-top: 1%;
 }
 

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/Logo.svg";
 
 const Navbar = () => {
+
   return (
     <>
       <nav className="navbar">
