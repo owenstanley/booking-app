@@ -6,4 +6,5 @@ The brief is to develop a booking tool for a restaurant, based on designs made i
 
 The booking tool is built with React.js
 
-Once the ceritificaiton has been finished, the link to verify its completion will be below:
+The link to verify its completion is below:
+https://coursera.org/share/876c223214a8281ecbc65a396a7ee233
